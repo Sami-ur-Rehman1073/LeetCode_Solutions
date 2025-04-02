@@ -1,0 +1,18 @@
+from collections import Counter
+def intersect(nums1, nums2):
+    result = []
+    seen = set()
+    nums1_count = Counter(nums1)
+    nums2_count = Counter(nums2)
+
+    for i in nums1:
+        if i not in seen:
+            if i in nums2:
+                n = min(nums1_count[i], nums2_count[i])
+                temp = [i] * n
+                result = result + temp
+                seen.add(i)
+    
+    return result
+
+print(intersect([1,1,2,2], [2,2]))       
